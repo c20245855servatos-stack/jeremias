@@ -1,0 +1,77 @@
+header {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(2, 3, 3);
+    padding: 20px;
+    margin: 20px;
+    close {
+        background-color: rgb(255, 0, 0);
+        border: 1px solid rgb(2, 3, 3);
+        padding: 10px;
+        margin: 10px;
+
+    }
+   
+}
+
+
+body {
+    background-color: rgb(221, 220, 235);
+    
+}
+
+h2 {
+    font: italic bold 20px/30px Georgia, serif;
+    color: rgb(1, 22, 22);
+}
+h1 {
+    font:  bold 20px/30px Georgia, serif;
+    color: rgb(5, 46, 100);
+}
+
+main {
+    background-color: rgb(4, 184, 124);
+    border: 1px solid rgb(2, 3, 3);
+    line-height: 4;
+    padding: 20px;
+    margin: 20px;
+    section {
+        background-color: rgb(158, 240, 6);
+        border: 1px solid rgb(2, 3, 3);
+        padding: 20px;
+        margin: 20px;
+
+        text-align: center;
+    }
+    form {
+        background-color: rgb(255, 230, 2);
+        border: 1px solid rgb(2, 3, 3);
+        padding: 20px;
+        margin: 20px;
+        
+        
+        input {
+            background-color: rgb(255, 255, 255);
+            border: 1px solid rgb(2, 3, 3);
+            padding: 10px;
+            margin: 10px;
+        }
+        textarea {
+            background-color: rgb(184, 238, 149);
+            border: 1px solid rgb(2, 3, 3);
+            padding: 5px;
+            margin: 5px;
+            hover {
+                background-color: rgb(255, 255, 255);
+            }
+            button {
+                background-color: rgb(136, 13, 13);
+                border: 1px solid rgb(194, 3, 3);
+                padding: 10px;
+                margin: 10px;
+                hover {
+                    background-color: rgb(0, 255, 0);
+                }
+            }
+    }
+}
+}
