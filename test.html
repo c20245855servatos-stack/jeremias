@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+//# Task 1
+const students = [
+    {
+        name: "Juan",
+        age: 18,
+        course: "BSIT",
+        grade: 92
+    },
+    {
+        name: "Maria",
+        age: 19,
+        course: "BSCS",
+        grade: 85
+    },
+    {
+        name: "Pedro",
+        age: 18,
+        course: "BSIT",
+        grade: 74
+    },
+    {
+        name: "Ana",
+        age: 20,
+        course: "BSIS",
+        grade: 65
+    },
+    //Challenge 1 – Add More Students
+    {
+    name: "Carlos",
+    age: 19,
+    course: "BSIT",
+    grade: 90
+}
+];
+
+console.log ("name:" + students [0].name)
+console.log ("age:" + students [0].age)
+console.log ("course:" + students [0].course)
+console.log ("grade:" + students [0].grade);
+
+
+
+//# Task 2
+ function getStatus(grade) {
+    if (grade>=90 && grade<=100){
+            return "Excellent";
+    }
+     else  if (grade>=75 && grade<=89){
+            return "Passed"; 
+     }
+     //### Challenge 2 – Add a "Needs Improvement" Status
+     else  if (grade>=70 && grade<=74){
+            return "Needs Improvement"; 
+     }
+        else if (grade<70){
+            return "Failed";
+        }
+}
+
+function achStatus(grade) {
+    if (grade>=90 && grade<=100){
+            return "Achievement: Outstanding Performance! ";
+    }
+     else {
+        return " ";
+     }
+}
+
+
+console.log(getStatus(95));
+console.log(getStatus(80));
+console.log(getStatus(70));
+
+//# Task 3
+for (let i = 0; i < students.length; i++) {
+    console.log ((students[i]).name + " " + 
+    (students[i]).course +  " " +  (students[i]).grade +  " " +
+     getStatus(students[i].grade) +  " ");
+
+}
+
+//# Task 4
+const getMessage = (name, status) => {
+    return (name + " is an " + status + " student");
+};
+
+console.log(getMessage("Juan", "Excellent"));
+
+//# Task 5
+
+for (let i = 0; i < students.length; i++) {
+    console.log ("name: " + (students[i]).name + " ");
+    console.log("course: " + (students[i]).course +  " ");
+    console.log("Grades: " +  (students[i]).grade +  " ");
+    console.log("Status: " + getStatus(students[i].grade) +  " ");
+    console.log( getMessage(students[i].name,getStatus(students[i].grade)));
+    console.log ( achStatus(students[i].grade))
+}
+        
+             
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+</body>
+</html>
+
+
+
