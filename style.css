@@ -31,9 +31,9 @@ main {
 
 main section {
     flex: 1;
-    max-width: 280px;
+    min-width: 280px;
     border: 2px solid black;
-    padding: 30px;
+    padding: 20px;
 }
 
 form {
@@ -42,8 +42,8 @@ form {
    gap: 20px;
 }
 
-#services {
-    padding: 0 0 50px 50px;
+#service {
+    padding: 0 50px; ;
     
 }
 
