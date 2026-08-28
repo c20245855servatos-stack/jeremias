@@ -84,3 +84,27 @@ h1 {
     }
 }
 
+
+
+nav a{
+    transition: color 0.5s ease ;
+}
+
+nav a:hover{
+    color : pink;
+}
+
+button {
+ transition:  background-color 1.0s ease;
+ background-color: black;
+ color: white ;
+border-radius: 10px;
+border: none;
+padding: 12px 24px;
+}
+
+button:hover{
+  
+    background-color:  pink ;
+color: black;
+}
