@@ -26,11 +26,14 @@ if (Array.isArray(names))
 }
 console.log(greet("Mayong aga", ["Jeremias","John", "kim","jhonny", "leopard"]));
 
-const heading = document.querySelector("h1");
-console.log(heading);
+const heading = document.querySelector ("h1");
+heading.textContent = "Jeremias servatos Sr. ";
+console.log(heading.textContent);
 
 const contactHeading = document.querySelector("#contact h2");
-console.log(contactHeading)
+console.log(contactHeading);
 
 const servicesHeading = document.querySelector("#services h2");
 console.log(servicesHeading)
+
+
