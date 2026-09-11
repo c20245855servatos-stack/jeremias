@@ -3,119 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SolarTech Energy Refactoring Challenge</title>
 </head>
 <body>
-    
+
+
 
     <script>
-//# Task 1
-const students = [
-    {
-        name: "Juan",
-        age: 18,
-        course: "BSIT",
-        grade: 92
-    },
-    {
-        name: "Maria",
-        age: 19,
-        course: "BSCS",
-        grade: 85
-    },
-    {
-        name: "Pedro",
-        age: 18,
-        course: "BSIT",
-        grade: 74
-    },
-    {
-        name: "Ana",
-        age: 20,
-        course: "BSIS",
-        grade: 65
-    },
-    //Challenge 1 – Add More Students
-    {
-    name: "Carlos",
-    age: 19,
-    course: "BSIT",
-    grade: 90
-}
-];
 
-console.log ("name:" + students [0].name)
-console.log ("age:" + students [0].age)
-console.log ("course:" + students [0].course)
-console.log ("grade:" + students [0].grade);
+        class SolarPanel {
+            constructor(panelId, wattageOutput, sunlightHours) {
+                this.panelId = panelId;
+                this._wattageOutput = wattageOutput;
+                this.sunlightHours = sunlightHours;
+            }
 
 
+            get wattageOutput() {
+                return this._wattageOutput;
+            }
 
-//# Task 2
- function getStatus(grade) {
-    if (grade>=90 && grade<=100){
-            return "Excellent";
-    }
-     else  if (grade>=75 && grade<=89){
-            return "Passed"; 
-     }
-     //### Challenge 2 – Add a "Needs Improvement" Status
-     else  if (grade>=70 && grade<=74){
-            return "Needs Improvement"; 
-     }
-        else if (grade<70){
-            return "Failed";
+
+            // Setter for wattageOutput
+            set wattageOutput(value) {
+                if (value <= 0) {
+                    console.log("Error: Wattage must be greater than zero.");
+                    return;
+                }
+
+
+                this._wattageOutput = value;
+            }
+
+
+            // Return panel details
+            getDetails() {
+                return `Panel: ${this.panelId} | Output: ${this.wattageOutput}W | Sun: ${this.sunlightHours}h`;
+            }
         }
-}
-
-function achStatus(grade) {
-    if (grade>=90 && grade<=100){
-            return "Achievement: Outstanding Performance! ";
-    }
-     else {
-        return " ";
-     }
-}
 
 
-console.log(getStatus(95));
-console.log(getStatus(80));
-console.log(getStatus(70));
-
-//# Task 3
-for (let i = 0; i < students.length; i++) {
-    console.log ((students[i]).name + " " + 
-    (students[i]).course +  " " +  (students[i]).grade +  " " +
-     getStatus(students[i].grade) +  " ");
-
-}
-
-//# Task 4
-const getMessage = (name, status) => {
-    return (name + " is an " + status + " student");
-};
-
-console.log(getMessage("Juan", "Excellent"));
-
-//# Task 5
-
-for (let i = 0; i < students.length; i++) {
-    console.log ("name: " + (students[i]).name + " ");
-    console.log("course: " + (students[i]).course +  " ");
-    console.log("Grades: " +  (students[i]).grade +  " ");
-    console.log("Status: " + getStatus(students[i].grade) +  " ");
-    console.log( getMessage(students[i].name,getStatus(students[i].grade)));
-    console.log ( achStatus(students[i].grade))
-}
-        
-             
+        class TrackingPanel extends SolarPanel {
+            constructor(panelId, wattageOutput, sunlightHours, efficiencyBoostPercent) {
+                super(panelId, wattageOutput, sunlightHours);
+                this._efficiencyBoostPercent = efficiencyBoostPercent;
+            }
 
 
+            // Getter for efficiencyBoostPercent
+            get efficiencyBoostPercent() {
+                return this._efficiencyBoostPercent;
+            }
+
+
+            // Setter for efficiencyBoostPercent
+            set efficiencyBoostPercent(value) {
+                if (value < 0) {
+                    console.log("Error: Efficiency boost cannot be negative.");
+                    return;
+                }
+
+
+                this._efficiencyBoostPercent = value;
+            }
+
+
+            // Override getDetails()
+            getDetails() {
+                return `${super.getDetails()} | Boost: ${this.efficiencyBoostPercent}%`;
+            }
+        }
+
+0
+        function calculateDailyPowerOutput(panel, weatherCondition) {
+            let baseline = panel.wattageOutput * panel.sunlightHours;
+
+
+            // Apply efficiency boost if present
+           
+
+
+            // Weather adjustments
+            if (weatherCondition == "Sunny") {
+                finalOutput = baseline * 1.00;
+            } 
+            else if (weatherCondition == "Cloudy") {
+                finalOutput = baseline * 0.60;
+            } 
+            else if (weatherCondition == "Rainy") {
+                finalOutput = baseline * 0.20;
+            } 
+            else {
+                console.log("Invalid weather condition");
+                return 0;
+            }
+
+
+            return finalOutput.toFixed(2);
+        }
 
 
 
 
+   
+        function auditSolarArray(panelArray) {
+            let totalArrayPower = 0;
 
+
+            // Standard for loop
+            for (let i = 0; i < panelArray.length; i++) {
+                const panel = panelArray[i];
+
+
+                console.log(panel.getDetails());
+
+
+                // Condition flag
+                if (panel.sunlightHours < 2) {
+                    console.log("[SHADED] Low solar exposure warning.");
+                } 
+                else if (panel.wattageOutput >= 400) {
+                    console.log("[HIGH CAPACITY] Optimal generation panel.");
+                } 
+                else {
+                    console.log("[OPERATIONAL] Normal energy flow.");
+                }
+
+
+                // Accumulate baseline power
+                totalArrayPower += panel.wattageOutput * panel.sunlightHours;
+            }
+
+
+            return totalArrayPower;
+        }
+
+console.log("=== TEST 1: Encapsulation & Validation ===");
+const tracker = new TrackingPanel("PANEL-01", 400, 8, 20);
+const staticPanel = new SolarPanel("PANEL-02", 300, 1);
+ 
+console.log(tracker.getDetails());
+
+ 
+tracker.wattageOutput = 0;
+
+ 
+console.log(`Verified Output: ${tracker.wattageOutput}W`);
+
+ 
+console.log("\n=== TEST 2: Power Generation & Weather ===");
+console.log(`Sunny Tracker Output: ${calculateDailyPowerOutput(tracker, "Sunny")} Wh`);
+
+ 
+console.log(`Cloudy Static Output: ${calculateDailyPowerOutput(staticPanel, "Cloudy")} Wh`);
+
+ 
+console.log("\n=== TEST 3: Solar Array Audit ===");
+const solarArray = [
+  tracker,
+  staticPanel,
+  new TrackingPanel("PANEL-03", 450, 6, 15),
+  new SolarPanel("PANEL-04", 250, 5)
+];
+ 
+const totalGeneration = auditSolarArray(solarArray);
+console.log(`\nTotal Baseline Power Generation: ${totalGeneration} Wh`);
 
 
     </script>
@@ -123,6 +175,9 @@ for (let i = 0; i < students.length; i++) {
 
 </body>
 </html>
+
+
+
 
 
 
